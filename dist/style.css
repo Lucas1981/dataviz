@@ -15,3 +15,7 @@
   position: fixed;
   margin-top: -32px;
 }
+
+.grid line {
+  stroke: lightgrey;
+}

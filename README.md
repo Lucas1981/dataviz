@@ -10,7 +10,10 @@ The charts I want to build first are:
 - Line chart
 - Bar chart
 - Stacked bar chart
+- Grouped bar chart
 - Horizontal bar chart
+- Horizontal stacked bar chart
+- Horizontal grouped bar chart
 - Scatter plot
 - Box plot
 - Violin plot
@@ -26,6 +29,8 @@ The functionality I'd optimally want to realise is:
 - Line renders
 - Circle renders
 - Popover functionality
+- Handle negative values
+- Handle missing (null) values
 - Screen resize reaction
 - Data change reaction
 - Zoom functionality

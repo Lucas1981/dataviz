@@ -39,7 +39,7 @@ export const mountXAxis = (
 };
 
 export const mountYAxis = (
-  scaleType, data, targetElement, width, height, direction, ticks = null, tickFormat = null
+  scaleType, data, targetElement, width, height, direction, ticks = null, tickFormat = null, gridLines = true
 ) => {
   const scale = scaleType
     .range([height, 0]);
@@ -57,6 +57,7 @@ export const mountYAxis = (
       if (tickFormat) { axis.tickFormat(tickFormat); }
 
       g.call(axis);
+
       break;
     case directions.right:
       axis = d3
@@ -73,6 +74,22 @@ export const mountYAxis = (
       throw new Error('No valid direction specified');
   }
 
+  if (gridLines) {
+    targetElement
+      .append('g')
+      .attr('class', 'grid')
+      .call(d3
+        .axisLeft(scale)
+        .ticks(ticks || data.length)
+        .tickSize(-width)
+        .tickFormat('')
+      )
+      .call(g => g
+        .select(".domain")
+        .remove()
+      );
+  }
+
   return scale;
 };
 
@@ -80,14 +97,16 @@ export const mountXAxisLinear = (
   data, targetElement, width, height, direction, ticks = null, tickFormat = null
 ) => mountXAxis(
   d3.scaleLinear()
-    .domain([0, Math.max(...data)]),
+    .domain(d3.extent(data))
+    .nice(),
   data, targetElement, width, height, direction, ticks, tickFormat);
 
 export const mountYAxisLinear = (
   data, targetElement, width, height, direction, ticks = null, tickFormat = null
 ) => mountYAxis(
   d3.scaleLinear()
-    .domain([0, Math.max(...data)]),
+    .domain(d3.extent(data))
+    .nice(),
   data, targetElement, width, height, direction, ticks, tickFormat);
 
 export const mountXAxisBand = (
