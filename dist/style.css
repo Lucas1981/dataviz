@@ -1,0 +1,17 @@
+.chart-wrapper {
+  padding-top: 64px;
+}
+
+.popover {
+  min-width: 6rem;
+  min-height: 1rem;
+  background-color: white;
+  border-radius: 3px;
+  border-color: grey;
+  border-style: solid;
+  border-width: 1px;
+  padding: 4px;
+  text-align: center;
+  position: fixed;
+  margin-top: -32px;
+}
