@@ -31,6 +31,7 @@ The functionality I'd optimally want to realise is:
 - Popover functionality
 - Handle negative values
 - Handle missing (null) values
+- Minimum bar size (in case of zero values)
 - Screen resize reaction
 - Data change reaction
 - Zoom functionality
